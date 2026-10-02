@@ -14,6 +14,7 @@ export default function RequestPage() {
   const { items, setQty, remove, clear } = useBag();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [shipping, setShipping] = useState<ShippingAddress>(emptyShippingAddress);
   const [addressConfirmed, setAddressConfirmed] = useState(false);
   const [error, setError] = useState("");
@@ -50,6 +51,7 @@ export default function RequestPage() {
         action: "submitRequest",
         name,
         email,
+        phone,
         address: line2 ? `${line1}, ${line2}` : line1,
         address2: line2,
         city: shipping.city,
@@ -63,6 +65,7 @@ export default function RequestPage() {
       clear();
       setName("");
       setEmail("");
+      setPhone("");
       setShipping(emptyShippingAddress);
       setAddressConfirmed(false);
       setThanksOpen(true);
@@ -141,7 +144,7 @@ export default function RequestPage() {
       <form className="request-form" onSubmit={onSubmit}>
         <div className="request-form-head">
           <h2>Ship to</h2>
-          <p>Name, email, and shipping address</p>
+          <p>Name, email, phone, and shipping address</p>
         </div>
 
         <div className="form-stack">
@@ -161,6 +164,17 @@ export default function RequestPage() {
               />
             </label>
           </div>
+          <label>
+            Phone
+            <input
+              type="tel"
+              value={phone}
+              onChange={(event) => setPhone(event.target.value)}
+              required
+              autoComplete="tel"
+              placeholder="In case we need to reach you about the shipment"
+            />
+          </label>
           <ShippingFields
             value={shipping}
             confirmed={addressConfirmed}
