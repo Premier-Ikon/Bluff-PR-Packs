@@ -31,7 +31,7 @@ export default function SiteHeader() {
   const { count } = useBag();
   return (
     <>
-      <div className="announce">Complimentary PR requests · Available sizes only</div>
+      <div className="announce">Complimentary friend requests · Available sizes only</div>
       <header className="site-header">
         <Link className="brand" href="/">
           <img src={LOGO} alt="Got Bluff" />
