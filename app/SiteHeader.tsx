@@ -35,7 +35,7 @@ export default function SiteHeader() {
       <header className="site-header">
         <Link className="brand" href="/">
           <img src={LOGO} alt="Got Bluff" />
-          <span className="brand-tag">PR Packs</span>
+          <span className="brand-tag">Friends Only</span>
         </Link>
         <nav className="header-nav">
           <Link className="header-link" href="/">

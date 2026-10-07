@@ -5,8 +5,8 @@ import RouteProgress from "./components/RouteProgress";
 import SiteHeader from "./SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Got Bluff · PR Packs",
-  description: "Complimentary Bluff product requests for press and partners.",
+  title: "Got Bluff · Friends Only",
+  description: "Grab what you want from the Got Bluff catalog.",
 };
 
 export const viewport: Viewport = {

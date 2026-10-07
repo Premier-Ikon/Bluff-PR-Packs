@@ -5,7 +5,13 @@ export type CatalogProduct = {
   productType: string;
   image: string;
   availableSizes: string[];
+  sizeHandles?: string[];
   available: boolean;
+};
+
+export type CatalogSize = {
+  handle: string;
+  title: string;
 };
 
 export type ProductVariant = {
