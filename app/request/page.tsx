@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ShippingFields, {
   emptyShippingAddress,
   type ShippingAddress,
@@ -11,6 +12,7 @@ import { useBag } from "../lib/BagProvider";
 import { api } from "../lib/api";
 
 export default function RequestPage() {
+  const router = useRouter();
   const { items, setQty, remove, clear } = useBag();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -194,15 +196,23 @@ export default function RequestPage() {
         </button>
       </form>
 
-      <BrandModal open={thanksOpen} title="Thank you" onClose={() => setThanksOpen(false)}>
+      <BrandModal
+        open={thanksOpen}
+        title="Thank you"
+        dismissAnywhere
+        onClose={() => {
+          setThanksOpen(false);
+          router.push("/");
+        }}
+      >
         <p className="brand-modal-copy">
-          Your PR request is in. We’ll review it and follow up by email.
+          Your request is in. We’ll review it and follow up by email.
         </p>
         <div className="brand-modal-actions">
-          <Link className="primary-btn" href="/" onClick={() => setThanksOpen(false)}>
+          <Link className="primary-btn" href="/">
             Back to shop
           </Link>
-          <button className="ghost-btn" type="button" onClick={() => setThanksOpen(false)}>
+          <button className="ghost-btn" type="button">
             Close
           </button>
         </div>

@@ -8,11 +8,13 @@ export function BrandModal({
   title,
   children,
   onClose,
+  dismissAnywhere = false,
 }: {
   open: boolean;
   title: string;
   children: ReactNode;
   onClose?: () => void;
+  dismissAnywhere?: boolean;
 }) {
   const titleId = useId();
 
@@ -33,10 +35,14 @@ export function BrandModal({
   if (!open || typeof document === "undefined") return null;
 
   return createPortal(
-    <div className="brand-modal-root" role="presentation">
+    <div
+      className="brand-modal-root"
+      role="presentation"
+      onClick={dismissAnywhere ? () => onClose?.() : undefined}
+    >
       <button className="brand-modal-backdrop" type="button" aria-label="Close" onClick={onClose} />
       <div className="brand-modal" role="dialog" aria-modal="true" aria-labelledby={titleId}>
-        <p className="brand-modal-eyebrow">Bluff PR</p>
+        <p className="brand-modal-eyebrow">Bluff Friends</p>
         <h2 id={titleId}>{title}</h2>
         {children}
       </div>
